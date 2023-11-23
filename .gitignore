@@ -1,0 +1,49 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
+
+# ENV
+.env
+
+# CONFIG
+containers/config.json
+
+# DB data
+
+containers/db/mysql_slave/data/*
+!containers/db/mysql_slave/data/.gitkeep
+
+containers/php/html/*
+containers/ftp
+containers/ftp_second
+
+containers/db/mysql/data/*
+!containers/db/mysql/data/.gitkeep
+containers/db/files_bridge/*
+
+containers/db/mysql_activity/data/*
+!containers/db/mysql_activity/data/.gitkeep
+
+#php8 configs examples
+containers/php8/crons
+containers/php8/php.ini
+containers/php8/xdebug.ini
+containers/php8/php-fpm.conf
+
+#php configs examples
+containers/php/php.ini
+containers/php/xdebug.ini
+containers/php/php-fpm.conf

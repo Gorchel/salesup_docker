@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    image: redis:6
+    container_name: ${CONTAINER_REDIS}
+    restart: unless-stopped
+    tty: true
+    ports:
+      - ${REDIS_PORT}:6379
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+    command: redis-server --appendonly yes --databases 16
+    volumes:
+      - redis-data:/data
+      - ./containers/redis/redis.conf:/usr/local/etc/redis/redis.conf
+volumes:
+  redis-data:

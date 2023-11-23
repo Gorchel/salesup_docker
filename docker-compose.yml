@@ -1,0 +1,7 @@
+version: '3'
+
+#Docker Networks
+networks:
+  internal:
+    name: salesup_network
+    driver: bridge

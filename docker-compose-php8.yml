@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php8:
+    image: ${PHP8_IMAGE}
+    container_name: ${CONTAINER_PHP8:-panels_php8}
+    restart: unless-stopped
+    tty: true
+    dns: 8.8.8.8
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+    volumes:
+      - db-exec:/dbexec
+      - .:/var/www/docker
+      - ${PATH_SALESUP}:/var/www/salesup
+      - ./containers/php/html:/var/www/default
+      - ./containers/php8/php.ini:/usr/local/etc/php/conf.d/php-custom.ini
+      - ./containers/php8/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./containers/php8/crons:/var/www/crons
+      - ./containers/php8/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
+    networks:
+      default:
+        ipv4_address: 172.26.0.82
+    depends_on:
+      - mysql
+    extra_hosts:
+      - ${HOST_SALESUP}:${NGINX_INTERNAL_IP}

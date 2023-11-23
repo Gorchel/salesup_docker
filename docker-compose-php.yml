@@ -1,0 +1,26 @@
+version: '3'
+services:
+  php:
+    image: ${PHP_IMAGE}
+    container_name: ${CONTAINER_PHP}
+    restart: unless-stopped
+    tty: true
+    dns: 8.8.8.8
+    environment:
+      PHP_IDE_CONFIG: ${PHP_IDE_CONFIG}
+    volumes:
+      - db-exec:/dbexec
+      - .:/var/www/docker
+      - ${PATH_SALESUP}:/var/www/salesup
+      - ./containers/php/html:/var/www/default
+      - ./containers/php/php.ini:/usr/local/etc/php/php.ini
+      - ./containers/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./containers/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
+    networks:
+      default:
+        ipv4_address: ${PHP_INTERNAL_IP}
+    depends_on:
+      - mysql
+      - redis
+    extra_hosts:
+      - ${HOST_SALESUP}:${NGINX_INTERNAL_IP}
