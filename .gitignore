@@ -18,30 +18,12 @@ Thumbs.db
 # ENV
 .env
 
-# CONFIG
-containers/config.json
-
-# DB data
-
-containers/db/mysql_slave/data/*
-!containers/db/mysql_slave/data/.gitkeep
-
 containers/php/html/*
-containers/ftp
-containers/ftp_second
 
 containers/db/mysql/data/*
+containers/db/geometry.sql
 !containers/db/mysql/data/.gitkeep
 containers/db/files_bridge/*
-
-containers/db/mysql_activity/data/*
-!containers/db/mysql_activity/data/.gitkeep
-
-#php8 configs examples
-containers/php8/crons
-containers/php8/php.ini
-containers/php8/xdebug.ini
-containers/php8/php-fpm.conf
 
 #php configs examples
 containers/php/php.ini

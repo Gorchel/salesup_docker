@@ -23,4 +23,5 @@ services:
       - mysql
       - redis
     extra_hosts:
+      - host.docker.internal:host-gateway
       - ${HOST_SALESUP}:${NGINX_INTERNAL_IP}

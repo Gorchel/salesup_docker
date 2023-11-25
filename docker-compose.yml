@@ -5,3 +5,6 @@ networks:
   internal:
     name: salesup_network
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16

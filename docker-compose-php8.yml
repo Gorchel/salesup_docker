@@ -19,8 +19,9 @@ services:
       - ./containers/php8/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
     networks:
       default:
-        ipv4_address: 172.26.0.82
+        ipv4_address: ${PHP_INTERNAL_IP}
     depends_on:
       - mysql
     extra_hosts:
+      - host.docker.internal:host-gateway
       - ${HOST_SALESUP}:${NGINX_INTERNAL_IP}

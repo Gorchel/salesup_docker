@@ -15,9 +15,12 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-#      - ./containers/db/mysql/data:/var/lib/mysql
+      - ./containers/db/db_struucture.sql:/docker-entrypoint-initdb.d/mysql.sql
+      - ./containers/db/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - ./containers/db/mysql/data:/var/lib/mysql
       - ${PATH_SALESUP}:/var/www/salesup
       - db-exec:/usr/bin
+      - ./containers/db/files_bridge:/tmp/files_bridge
 
   #Phpmyadmin Service
   phpmyadmin:
